@@ -1,0 +1,223 @@
+#include<stdio.h>
+int n,x,y,z,num,i;
+int a[10];
+int right=-1,left=-1;
+int main()
+{
+	printf("enter no of element in dequeue\n");
+	scanf("%d",&n);
+	do
+	{
+		printf("1.input restricted dequeue\n");
+		printf("2.output restricted dequeue\n");
+		printf("3.exit\n");
+		printf("enter choices\n");
+		scanf("%d",&x);
+		switch(x)
+		{
+			case 1:
+				inputdequeue();
+				break;
+			case 2:
+				outputdequeue();
+				break;
+		}
+	}
+	while(x<=2);
+}
+inputdequeue()
+{
+	do
+	{
+		printf("input restricted queue\n");
+		printf("1.insert at right\n");
+		printf("2.delete at right\n");
+		printf("3.delete at left\n");
+		printf("4.display\n");
+		printf("5.exit\n");
+		printf("enter ur choice\n");
+		scanf("%d",&y);
+		switch(y)
+		{
+			case 1:
+			   insertright();
+			   break;
+			case 2:
+			   deleteleft();
+			   break;
+			case 3:
+			   deleteright();
+			   break;
+			case 4:
+			   display();
+			   break;
+				
+		}
+	}
+	while(y<=4);
+}
+outputdequeue()
+{
+	do
+	{
+		printf("output restrected queue\n");
+			printf("1:insert at right\n");
+		printf("2:insert at left\n");
+		printf("3.delete at left\n");
+		printf("4.display\n");
+		printf("5:exit\n");
+		printf("enter ur choice\n");
+		scanf("%d",&z);
+		switch(z)
+		{
+			case 1:
+			   insertright();
+			   break;
+			case 2:
+			   insertleft();
+			   break;
+			case 3:
+			   deleteleft();
+			   break;
+			case 4:
+			   display();
+			   break;
+				
+		}
+	}
+	while(z<=4);
+	
+}
+insertright()
+{
+	if(left==right+1||left==0&&right==n-1)
+	printf("overflow\n");
+	else
+	{
+		printf("enter the element\n");
+		scanf("%d",&num);
+		if(left==-1&&right==-1)
+		{
+		left=0;
+		right=0;	
+		}
+		else
+		{
+			if(right==n-1)
+			{
+				right=0;
+			}
+			else
+			{
+				right=right+1;
+			}
+	}
+	}
+	a[right]=num;
+}
+insertleft()
+{
+if(left==right+1||left==0&&right==n-1)
+	printf("overflow\n");
+	else
+	{
+		printf("enter the element\n");
+		scanf("%d",&num);
+		if(left==-1&&right==-1)
+		{
+		left=0;
+		right=0;	
+		}
+		else
+		{
+			if(left==0)
+			{
+				left=n-1;
+			}
+			else
+			{
+				left=left-1;
+			}
+			}
+		}
+		a[left]=num;
+}
+deleteleft()
+{
+	if(left==-1&&right==-1)
+	printf("underflow\n");
+	else
+	{
+		if(left==right)
+		{
+			printf("the deleted element is %d\n",a[right]);
+			left=-1;
+			right=-1;
+		}
+		else
+		{
+		if(right==0)
+		{
+			printf("the deleted element is %d\n",a[right]);
+			right=n-1;
+		}
+		else
+		{
+			printf("the deleted element is %d\n",a[right]);
+			right=right-1;
+		}
+	}
+	}
+}
+deleteright()
+{
+	if(left==-1&&right==-1)
+	printf("underflow\n");
+	else
+	{
+		if(left==right)
+		{
+			printf("the deleted element is %d\n",a[left]);
+			left=-1;
+			right=-1;
+		}
+		else
+		{
+			if(left==n-1)
+			{
+				printf("the deleted element is %d\n",a[left]);
+				left=0;
+			}
+			else
+			{
+				printf("the deleted element is %d\n",a[left]);
+				left=left+1;	
+			}
+		}
+	}
+}
+display()
+{
+	if(right==-1&&left==-1)
+	printf("queue is empty\n");
+	else
+	{
+		printf("the queue is\n");
+		if(left>right)
+		{
+			for(i=left;i<n;i++)
+			{
+			printf("%d\n",a[i]);
+		}
+			for(i=0;i<=right;i++)
+			{
+			printf("%d\n",a[i]);
+		}
+		}
+		else
+		{
+			for(i=left;i<=right;i++)
+				printf("%d\n",a[i]);
+		}
+	}
+}
