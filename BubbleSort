@@ -12,4 +12,18 @@ void bubble_sort( int A[ ], int n ) {
             }
         }
     }
+
+  cout<<"Sorted array is:";
+    for(i=0;i<n;i++)
+    {
+        cout<<A[i];
+    }
 }
+int main()
+{
+    int A[ ]={64,34,25,12,22,11,90};
+    int n = sizeof(A)/sizeof(A[0]);
+    bubble_sort(A,n);
+    
+}
+
